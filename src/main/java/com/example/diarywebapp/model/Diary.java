@@ -21,7 +21,7 @@ public class Diary {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "bodytext", nullable = false)
+    @Column(name = "bodytext")
     @NotBlank
     @Size(min=5, max=200)
     private String bodyText;
