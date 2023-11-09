@@ -38,6 +38,11 @@
 			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
 			<version>1.16</version>
 		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>5.2.2</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>日記の編集</title>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}" />
+</head>
+<body class="container mt-3">
+  <h1>日記の編集</h1>
+  <form th:action="@{/diary/update}" th:object="${diary}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <div class="mb-3">
+      <label for="bodyText"><h3>本文</h3></label>
+      <input type="text" class="form-control" th:field="*{bodyText}"
+      th:errorclass="is-invalid">
+      <div class="invalid-feedback" th:errors="*{bodyText}"></div>
+    </div>
+    <button type="submit" class="btn btn-primary">更新</button>
+  </form>
+  <br>
+  <a th:href="@{/diary/summary}">日記一覧に戻る</a>
+</body>
+</html>

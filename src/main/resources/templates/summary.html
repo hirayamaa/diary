@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}" />
+  <title>日記投稿アプリ</title>
+</head>
+<body class="container mt-3">
+  <h1 class="display-5">日記一覧</h1>
+  <table class="table table-striped table-hover table-sm">
+    <tr>
+      <th></th>
+      <th>投稿日時</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr th:each="diary : ${diaries}" th:object="${diary}">
+      <td th:text="*{bodyText}"></td>
+      <td th:text="*{createDateTime}"></td>
+      <td><a th:href="@{/diary/edit/{id}(id=*{id})}" class="btn btn-primary">編集</a> </td>
+      <td>
+        <form th:action="@{/diary/delete}" method="post">
+          <input type="hidden" name="id" th:value="${diary.id}" />
+          <input type="submit" class="btn btn-danger" value="削除" />
+        </form>
+      </td>
+    </tr>
+  </table>
+  <h3>新規投稿</h3>
+  <form th:action="@{/diary/add}" method="post">
+    <input type="text" name="newdiary" class="form-control mb-2">
+    <button type="submit" class="btn btn-primary">投稿する</button>
+  </form>
+</body>
+</html>
