@@ -34,11 +34,10 @@ public class DiaryController {
         return "redirect:/diary/summary";
     }
 
-    @PostMapping("add")
-    public String add(@RequestParam String newdiary) {
-        var diary = new Diary(newdiary, LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS));
-        diaryRepository.save(diary);
-        return "redirect:/diary/summary";
+    @GetMapping("add")
+    public String add(Model model) {
+        model.addAttribute("diary", new Diary());
+        return "edit";
     }
 
     @GetMapping("/edit/{id}")
